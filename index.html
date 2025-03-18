@@ -133,10 +133,10 @@
 
       #contacto input,
       #contacto textarea {
-        width: 100%;
+        width: 90%;
         padding: 10px;
-        margin-top: 10px;
-        border-radius: 5px;
+        margin-top: 15px;
+        border-radius: 8px;
         border: none;
         background: rgba(255, 255, 255, 0.2);
         color: white;
@@ -176,6 +176,52 @@
         color: white;
         border-top: 2px solid rgba(255, 255, 255, 0.2);
       }
+      #skills {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  width: 60%;
+ 
+  border-radius: 8px;
+}
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-item {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  border-radius: 8px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.skill-item img {
+  width: 40px;
+  height: 40px;
+  filter: invert(100%);
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.skill-item:hover {
+
+  transform: scale(1.1);
+}
+
+.skill-item:hover img {
+  filter: invert(80%) sepia(50%) hue-rotate(180deg);
+  transform: scale(1.1); 
+}
     </style>
   </head>
   <body>
@@ -196,7 +242,33 @@
     <img src="yo.jpg" alt="Carolina Barragan" class="profile-pic" />
 
     <h1>Carolina Barragan</h1>
-
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li class="skill-item">
+          <img src="skills/rust.gif" alt="Rust" />
+        </li>
+        <li class="skill-item">
+          <img src="skills/svelte.png" alt="Svelte" />
+        </li>
+        <li class="skill-item">
+          <img src="skills/icons8-viento-de-cola-css-48.png" alt="Tailwind CSS" />
+        </li>
+        <li class="skill-item">
+          <img src="icons/skeleton.svg" alt="Skeleton UI" />
+        </li>
+        <li class="skill-item">
+          <img src="skills/icons8-postgresql-48.png" alt="PostgreSQL" />
+        </li>
+        <li class="skill-item">
+          <img src="skills/icons8-aws-64.png" alt="AWS" />
+        </li>
+        <li class="skill-item">
+          <img src="skills/icons8-github.gif" alt="Git" />
+        </li>
+      </ul>
+      </div>
+    </section>
     <section id="experiencia">
       <h2>Experiencia</h2>
       <div class="experiencia-item">
