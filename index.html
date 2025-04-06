@@ -3,225 +3,260 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio Carolina Barragan</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Carolina Barragan - Portfolio</title>
     <style>
-      body {
-        background: rgb(43, 43, 43);
-        font-family: system-ui, sans-serif;
-        color: white;
+      * {
         margin: 0;
         padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #1a1a1a;
+        font-family: "Segoe UI", sans-serif;
+        color: #ffffff;
+        line-height: 1.6;
       }
 
       header {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        padding: 20px;
-        background-color: #333;
+        background: #0d0d0d;
+        padding: 20px 40px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       }
 
       nav {
         display: flex;
-        align-items: center;
+        justify-content: flex-end;
+        gap: 30px;
       }
 
       nav a {
-        color: white;
-        margin-left: 15px;
+        color: #ffffff;
         text-decoration: none;
-        font-size: 18px;
-        transition: transform 0.3s;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
       }
 
       nav a:hover {
-        transform: scale(1.1);
+        color: #00aaff;
       }
 
-      .skins {
+      .hero {
         display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 20%;
-        right: 5%;
-        transform: rotate(-20deg);
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+        padding: 0 40px;
+        background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
       }
 
-      .skin-item {
-        width: 80px;
-        height: 80px;
-        margin: 10px;
-        border-radius: 50%;
-        background-size: cover;
-        background-position: center;
-        transition: transform 0.3s;
+      .hero-content {
+        max-width: 600px;
+        text-align: left;
       }
 
-      .skin-item:hover {
-        transform: scale(1.1);
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+        color: #00aaff;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: #cccccc;
       }
 
       .profile-pic {
-        position: absolute;
-        top: 10%;
-        left: 10%;
-        width: 120px;
-        height: 120px;
+        width: 200px;
+        height: 200px;
         border-radius: 50%;
-        border: 3px solid white;
+        border: 4px solid #00aaff;
+        margin-left: 40px;
+        object-fit: cover;
       }
 
-      h1 {
-        text-align: center;
-        margin-top: 150px;
+      section {
+        padding: 60px 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h2 {
         font-size: 2.5rem;
+        margin-bottom: 30px;
+        color: #00aaff;
+        text-align: center;
       }
 
-      #experiencia {
-        margin-top: 30px;
-        padding: 20px;
-        width: 60%;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        transition: transform 0.3s;
+      #skills .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        list-style: none;
       }
 
-      #experiencia:hover {
-        transform: scale(1.02);
+      .skill-item {
+        background: #2b2b2b;
+        padding: 15px;
+        border-radius: 10px;
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
+
+      .skill-item img {
+        width: 50px;
+        height: 50px;
+        filter: brightness(0) invert(1);
+      }
+
+      .skill-item:hover {
+        transform: translateY(-5px);
+        background: #00aaff;
       }
 
       .experiencia-item {
-        margin-bottom: 15px;
-        padding: 10px;
-        border-left: 4px solid #57aec1;
-        padding-left: 15px;
+        background: #2b2b2b;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      .experiencia-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .experiencia-item h3 {
+        color: #00aaff;
+        margin-bottom: 5px;
       }
 
       #proyectos {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
       }
 
       .project-card {
-        background: rgba(255, 255, 255, 0.1);
+        background: #2b2b2b;
         padding: 20px;
-        margin: 10px;
-        border-radius: 8px;
-        width: 250px;
+        border-radius: 10px;
         text-align: center;
-        transition: transform 0.3s;
+        transition: transform 0.3s ease;
       }
 
       .project-card:hover {
         transform: translateY(-5px);
       }
 
-      #contacto {
-        margin-top: 30px;
-        padding: 20px;
-        width: 50%;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        text-align: center;
+      .project-card a {
+        color: #00aaff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      #contacto form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 500px;
+        margin: 0 auto;
       }
 
       #contacto input,
       #contacto textarea {
-        width: 90%;
-        padding: 10px;
-        margin-top: 15px;
-        border-radius: 8px;
+        padding: 12px;
         border: none;
-        background: rgba(255, 255, 255, 0.2);
-        color: white;
+        border-radius: 5px;
+        background: #2b2b2b;
+        color: #ffffff;
+        font-size: 1rem;
       }
 
-      #contacto input:focus,
-      #contacto textarea:focus {
-        outline: none;
-        background: rgba(255, 255, 255, 0.3);
+      #contacto input::placeholder,
+      #contacto textarea::placeholder {
+        color: #aaaaaa;
       }
 
       #contacto button {
-        margin-top: 15px;
-        padding: 10px 20px;
+        padding: 12px;
+        background: #00aaff;
         border: none;
         border-radius: 5px;
-        background: #57aec1;
-        color: white;
+        color: #ffffff;
+        font-weight: 600;
         cursor: pointer;
-        transition: background 0.3s;
-      }
-      #contacto input::placeholder,
-      #contacto textarea::placeholder {
-        color: #bbb;
+        transition: background 0.3s ease;
       }
 
       #contacto button:hover {
-        background: #4699ab;
+        background: #0088cc;
+      }
+
+      /* Estilos para la nueva sección de Habilidades y Capacitaciones */
+      #habilidades-capacitaciones {
+        background: #2b2b2b;
+        border-radius: 10px;
+        padding: 40px;
+        margin: 0 auto;
+      }
+
+      .habilidades-capacitaciones-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .habilidades-list,
+      .capacitaciones-list {
+        list-style: none;
+      }
+
+      .habilidades-list li,
+      .capacitaciones-list li {
+        padding: 15px;
+        background: #1a1a1a;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      .habilidades-list li:hover,
+      .capacitaciones-list li:hover {
+        transform: translateX(5px);
+      }
+
+      .habilidades-list li img {
+        width: 30px;
+        height: 30px;
+        filter: brightness(0) invert(1);
+      }
+
+      .capacitaciones-list li span {
+        font-weight: 600;
+        color: #00aaff;
+      }
+
+      @media (max-width: 768px) {
+        .habilidades-capacitaciones-container {
+          grid-template-columns: 1fr;
+        }
       }
 
       footer {
-        width: 100%;
-        text-align: center;
+        background: #0d0d0d;
         padding: 20px;
-        background-color: #333;
-        margin-top: auto;
-        color: white;
-        border-top: 2px solid rgba(255, 255, 255, 0.2);
+        text-align: center;
+        color: #cccccc;
+        font-size: 0.9rem;
       }
-      #skills {
-  text-align: center;
-  margin-top: 30px;
-  padding: 20px;
-  width: 60%;
- 
-  border-radius: 8px;
-}
-
-.skills-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  padding: 0;
-  margin: 0;
-}
-
-.skill-item {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  border-radius: 8px;
-  transition: transform 0.3s, background 0.3s;
-}
-
-.skill-item img {
-  width: 40px;
-  height: 40px;
-  filter: invert(100%);
-  transition: transform 0.3s, filter 0.3s;
-}
-
-.skill-item:hover {
-
-  transform: scale(1.1);
-}
-
-.skill-item:hover img {
-  filter: invert(80%) sepia(50%) hue-rotate(180deg);
-  transform: scale(1.1); 
-}
     </style>
   </head>
   <body>
@@ -230,29 +265,28 @@
         <a href="#experiencia">Experiencia</a>
         <a href="#proyectos">Proyectos</a>
         <a href="#contacto">Contacto</a>
+        <a href="#habilidades-capacitaciones">Habilidades</a>
       </nav>
     </header>
 
-    <div class="skins">
-      <div class="skin-item" style="background-image: url('skin1.jpg')"></div>
-      <div class="skin-item" style="background-image: url('skin2.jpg')"></div>
-      <div class="skin-item" style="background-image: url('skin3.jpg')"></div>
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Carolina Barragan</h1>
+        <p>Desarrolladora Full Stack | Innovación Tecnológica</p>
+      </div>
+      <img src="yo.jpg" alt="Carolina Barragan" class="profile-pic" />
     </div>
 
-    <img src="yo.jpg" alt="Carolina Barragan" class="profile-pic" />
-
-    <h1>Carolina Barragan</h1>
     <section id="skills">
       <h2>Skills</h2>
       <ul class="skills-list">
+        <li class="skill-item"><img src="skills/rust.gif" alt="Rust" /></li>
+        <li class="skill-item"><img src="skills/svelte.png" alt="Svelte" /></li>
         <li class="skill-item">
-          <img src="skills/rust.gif" alt="Rust" />
-        </li>
-        <li class="skill-item">
-          <img src="skills/svelte.png" alt="Svelte" />
-        </li>
-        <li class="skill-item">
-          <img src="skills/icons8-viento-de-cola-css-48.png" alt="Tailwind CSS" />
+          <img
+            src="skills/icons8-viento-de-cola-css-48.png"
+            alt="Tailwind CSS"
+          />
         </li>
         <li class="skill-item">
           <img src="icons/skeleton.svg" alt="Skeleton UI" />
@@ -267,35 +301,36 @@
           <img src="skills/icons8-github.gif" alt="Git" />
         </li>
       </ul>
-      </div>
     </section>
+
     <section id="experiencia">
       <h2>Experiencia</h2>
       <div class="experiencia-item">
         <h3>Programadora Full Stack - Empresa Automotriz</h3>
         <p><strong>2024 - Actualidad</strong></p>
         <p>
-          Desarrollo de plataformas D2C con Rust y Svelte. Implementación de
-          diagnósticos profundos y optimización de bases de datos.
+          Desarrollo de plataformas D2C con Rust y Svelte. Optimización de bases
+          de datos y diagnósticos profundos.
         </p>
       </div>
       <div class="experiencia-item">
         <h3>Proyecto JOY - DC Connected</h3>
         <p><strong>2023 - 2024</strong></p>
         <p>
-          Participé en la mejora de escalabilidad y estructura del backend,
-          optimizando las solicitudes HTTP y la integración con APIs.
+          Mejora de escalabilidad y backend, optimizando solicitudes HTTP e
+          integración con APIs.
         </p>
       </div>
     </section>
 
     <section id="proyectos">
+      <h2>Proyectos</h2>
       <div class="project-card">
         <h3>AutoParts</h3>
-        <p>Descripción del proyecto 1.</p>
-        <a href="stocks-parts-ui.vercel.app" target="_blank" style="color: #57aec1; text-decoration: none; font-weight: bold;">
-          Ver Proyecto
-        </a>
+        <p>Plataforma de gestión de inventario automotriz.</p>
+        <a href="https://stocks-parts-ui.vercel.app" target="_blank"
+          >Ver Proyecto</a
+        >
       </div>
       <div class="project-card">
         <h3>Proyecto 2</h3>
@@ -317,8 +352,44 @@
       </form>
     </section>
 
+    <!-- Sección de Habilidades y Capacitaciones al final -->
+    <section id="habilidades-capacitaciones">
+      <h2>Habilidades y Capacitaciones</h2>
+      <div class="habilidades-capacitaciones-container">
+        <div>
+          <h3>Habilidades Técnicas</h3>
+          <ul class="habilidades-list">
+            <li><img src="skills/rust.gif" alt="Rust" /> Desarrollo en Rust</li>
+            <li>
+              <img src="skills/svelte.png" alt="Svelte" /> Frontend con Svelte
+            </li>
+            <li>
+              <img src="skills/icons8-postgresql-48.png" alt="PostgreSQL" />
+              Bases de datos PostgreSQL
+            </li>
+            <li>
+              <img src="skills/icons8-aws-64.png" alt="AWS" /> Arquitectura en
+              AWS
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>Capacitaciones</h3>
+          <ul class="capacitaciones-list">
+            <li>
+              <span>AWS Certified Solutions Architect</span> - Amazon Web
+              Services (2024)
+            </li>
+            <li><span>Rust Programming</span> - Udemy (2023)</li>
+            <li><span>Full Stack Development</span> - Platzi (2022)</li>
+            <li><span>Scrum Master Certification</span> - Scrum.org (2021)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <footer>
-      <p>&copy; 2025 Carolina Barragan. Todos los derechos reservados.</p>
+      <p>© 2025 Carolina Barragan. Todos los derechos reservados.</p>
     </footer>
   </body>
 </html>
