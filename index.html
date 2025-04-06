@@ -135,10 +135,15 @@
         margin-bottom: 5px;
       }
 
+      /* Estilos del carrusel de proyectos */
       #proyectos {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .carousel {
+        display: flex;
+        animation: slide 20s infinite linear;
       }
 
       .project-card {
@@ -146,17 +151,42 @@
         padding: 20px;
         border-radius: 10px;
         text-align: center;
+        min-width: 300px;
+        margin: 10px;
         transition: transform 0.3s ease;
+        flex-shrink: 0;
       }
 
       .project-card:hover {
-        transform: translateY(-5px);
+        transform: scale(1.05);
+      }
+
+      .project-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
       }
 
       .project-card a {
         color: #00aaff;
         text-decoration: none;
         font-weight: 600;
+      }
+
+      @keyframes slide {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      /* Pausar animación al pasar el mouse */
+      #proyectos:hover .carousel {
+        animation-play-state: paused;
       }
 
       #contacto form {
@@ -197,7 +227,6 @@
         background: #0088cc;
       }
 
-      /* Estilos para la nueva sección de Habilidades y Capacitaciones */
       #habilidades-capacitaciones {
         background: #2b2b2b;
         border-radius: 10px;
@@ -323,22 +352,47 @@
       </div>
     </section>
 
+    <!-- Sección de proyectos como carrusel -->
     <section id="proyectos">
       <h2>Proyectos</h2>
-      <div class="project-card">
-        <h3>AutoParts</h3>
-        <p>Plataforma de gestión de inventario automotriz.</p>
-        <a href="https://stocks-parts-ui.vercel.app" target="_blank"
-          >Ver Proyecto</a
-        >
-      </div>
-      <div class="project-card">
-        <h3>Proyecto 2</h3>
-        <p>Descripción del proyecto 2.</p>
-      </div>
-      <div class="project-card">
-        <h3>Proyecto 3</h3>
-        <p>Descripción del proyecto 3.</p>
+      <div class="carousel">
+        <div class="project-card">
+          <img src="https://via.placeholder.com/300x150" alt="AutoParts" />
+          <h3>AutoParts</h3>
+          <p>Plataforma de gestión de inventario automotriz.</p>
+          <a href="https://stocks-parts-ui.vercel.app" target="_blank"
+            >Ver Proyecto</a
+          >
+        </div>
+        <div class="project-card">
+          <img src="https://via.placeholder.com/300x150" alt="Proyecto 2" />
+          <h3>Proyecto 2</h3>
+          <p>Descripción del proyecto 2.</p>
+        </div>
+        <div class="project-card">
+          <img src="https://via.placeholder.com/300x150" alt="Proyecto 3" />
+          <h3>Proyecto 3</h3>
+          <p>Descripción del proyecto 3.</p>
+        </div>
+        <!-- Duplicamos los elementos para el efecto infinito -->
+        <div class="project-card">
+          <img src="ProyectoAP/auto_part.png" alt="AutoParts" />
+          <h3>AutoParts</h3>
+          <p>Plataforma de gestión de inventario automotriz.</p>
+          <a href="https://stocks-parts-ui.vercel.app/" target="_blank"
+            >Ver Proyecto</a
+          >
+        </div>
+        <div class="project-card">
+          <img src="https://via.placeholder.com/300x150" alt="Proyecto 2" />
+          <h3>Proyecto 2</h3>
+          <p>Descripción del proyecto 2.</p>
+        </div>
+        <div class="project-card">
+          <img src="https://via.placeholder.com/300x150" alt="Proyecto 3" />
+          <h3>Proyecto 3</h3>
+          <p>Descripción del proyecto 3.</p>
+        </div>
       </div>
     </section>
 
@@ -352,7 +406,6 @@
       </form>
     </section>
 
-    <!-- Sección de Habilidades y Capacitaciones al final -->
     <section id="habilidades-capacitaciones">
       <h2>Habilidades y Capacitaciones</h2>
       <div class="habilidades-capacitaciones-container">
@@ -377,11 +430,15 @@
           <h3>Capacitaciones</h3>
           <ul class="capacitaciones-list">
             <li>
-              <span>AWS Certified Solutions Architect</span> - Amazon Web
-              Services (2024)
+              <span> AWS Educate Getting Started with Storage</span> - Amazon
+              Web Services (2025)
             </li>
-            <li><span>Rust Programming</span> - Udemy (2023)</li>
-            <li><span>Full Stack Development</span> - Platzi (2022)</li>
+            <li>
+              <span> AWS Educate Introduction to Cloud 101</span> - Amazon Web
+              Services (2025)
+            </li>
+            <li><span>Rust Programming</span></li>
+            <li><span>Full Stack Development</span> - Henry (2022)</li>
             <li><span>Scrum Master Certification</span> - Scrum.org (2021)</li>
           </ul>
         </div>
