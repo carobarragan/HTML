@@ -20,7 +20,7 @@
 
       header {
         background: #0d0d0d;
-        padding: 20px 40px;
+        padding: 15px 20px;
         position: sticky;
         top: 0;
         z-index: 10;
@@ -30,13 +30,14 @@
       nav {
         display: flex;
         justify-content: flex-end;
-        gap: 30px;
+        gap: 15px;
+        flex-wrap: wrap;
       }
 
       nav a {
         color: #ffffff;
         text-decoration: none;
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 500;
         transition: color 0.3s ease;
       }
@@ -50,44 +51,45 @@
         align-items: center;
         justify-content: center;
         min-height: 80vh;
-        padding: 0 40px;
+        padding: 20px;
         background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
+        flex-direction: column;
+        text-align: center;
       }
 
       .hero-content {
         max-width: 600px;
-        text-align: left;
       }
 
       .hero h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
         margin-bottom: 10px;
         color: #00aaff;
       }
 
       .hero p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         color: #cccccc;
       }
 
       .profile-pic {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
         border-radius: 50%;
         border: 4px solid #00aaff;
-        margin-left: 40px;
+        margin-top: 20px;
         object-fit: cover;
       }
 
       section {
-        padding: 60px 40px;
+        padding: 40px 20px;
         max-width: 1200px;
         margin: 0 auto;
       }
 
       h2 {
-        font-size: 2.5rem;
-        margin-bottom: 30px;
+        font-size: 2rem;
+        margin-bottom: 20px;
         color: #00aaff;
         text-align: center;
       }
@@ -96,20 +98,20 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 20px;
+        gap: 15px;
         list-style: none;
       }
 
       .skill-item {
         background: #333333;
-        padding: 15px;
+        padding: 10px;
         border-radius: 10px;
         transition: transform 0.3s ease, background 0.3s ease;
       }
 
       .skill-item img {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
       }
 
       .skill-item:hover {
@@ -119,8 +121,8 @@
 
       .experiencia-item {
         background: #2b2b2b;
-        padding: 20px;
-        margin-bottom: 20px;
+        padding: 15px;
+        margin-bottom: 15px;
         border-radius: 10px;
         transition: transform 0.3s ease;
       }
@@ -132,9 +134,10 @@
       .experiencia-item h3 {
         color: #00aaff;
         margin-bottom: 5px;
+        font-size: 1.2rem;
       }
 
-      /* Carrusel optimizado */
+      /* Carrusel responsive */
       #proyectos {
         overflow: hidden;
         position: relative;
@@ -143,21 +146,23 @@
 
       .carousel {
         display: flex;
-        width: 200%; /* Duplicamos el ancho para cubrir original + copia */
+        width: 200%;
         animation: slide 20s infinite linear;
       }
 
       .carousel-inner {
         display: flex;
-        width: 50%; /* Cada conjunto (original y copia) ocupa la mitad */
+        width: 50%;
+        gap: 10px;
       }
 
       .project-card {
         background: #2b2b2b;
-        padding: 20px;
+        padding: 15px;
         border-radius: 10px;
         text-align: center;
-        min-width: 300px;
+        width: 100%;
+        max-width: 300px;
         margin: 10px;
         flex-shrink: 0;
         transition: transform 0.3s ease;
@@ -169,16 +174,25 @@
 
       .project-card img {
         width: 100%;
-        height: 150px;
+        height: 120px;
         object-fit: cover;
         border-radius: 8px;
         margin-bottom: 10px;
+      }
+
+      .project-card h3 {
+        font-size: 1.1rem;
+      }
+
+      .project-card p {
+        font-size: 0.9rem;
       }
 
       .project-card a {
         color: #00aaff;
         text-decoration: none;
         font-weight: 600;
+        font-size: 0.9rem;
       }
 
       @keyframes slide {
@@ -186,9 +200,7 @@
           transform: translateX(0);
         }
         100% {
-          transform: translateX(
-            -50%
-          ); /* Desplaza solo la mitad del ancho total */
+          transform: translateX(-50%);
         }
       }
 
@@ -199,14 +211,14 @@
       #contacto form {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
         max-width: 500px;
         margin: 0 auto;
       }
 
       #contacto input,
       #contacto textarea {
-        padding: 12px;
+        padding: 10px;
         border: none;
         border-radius: 5px;
         background: #2b2b2b;
@@ -220,7 +232,7 @@
       }
 
       #contacto button {
-        padding: 12px;
+        padding: 10px;
         background: #00aaff;
         border: none;
         border-radius: 5px;
@@ -237,14 +249,14 @@
       #habilidades-capacitaciones {
         background: #2b2b2b;
         border-radius: 10px;
-        padding: 40px;
+        padding: 20px;
         margin: 0 auto;
       }
 
       .habilidades-capacitaciones-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 40px;
+        gap: 20px;
       }
 
       .habilidades-list,
@@ -254,7 +266,7 @@
 
       .habilidades-list li,
       .capacitaciones-list li {
-        padding: 15px;
+        padding: 10px;
         background: #1a1a1a;
         margin-bottom: 10px;
         border-radius: 8px;
@@ -270,19 +282,13 @@
       }
 
       .habilidades-list li img {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
       }
 
       .capacitaciones-list li span {
         font-weight: 600;
         color: #00aaff;
-      }
-
-      @media (max-width: 768px) {
-        .habilidades-capacitaciones-container {
-          grid-template-columns: 1fr;
-        }
       }
 
       footer {
@@ -291,6 +297,135 @@
         text-align: center;
         color: #cccccc;
         font-size: 0.9rem;
+      }
+
+      /* Media Queries para responsividad */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .profile-pic {
+          width: 120px;
+          height: 120px;
+        }
+
+        h2 {
+          font-size: 1.8rem;
+        }
+
+        .skill-item img {
+          width: 35px;
+          height: 35px;
+        }
+
+        .carousel {
+          width: 400%; /* Duplicamos más para pantallas pequeñas */
+          animation: slide-mobile 20s infinite linear;
+        }
+
+        .carousel-inner {
+          width: 25%; /* Cada conjunto ocupa un cuarto del ancho total */
+        }
+
+        @keyframes slide-mobile {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-75%); /* Ajustado para 4 secciones */
+          }
+        }
+
+        .project-card {
+          max-width: 100%;
+          margin: 5px;
+        }
+
+        .project-card img {
+          height: 100px;
+        }
+
+        .habilidades-capacitaciones-container {
+          grid-template-columns: 1fr;
+        }
+
+        .experiencia-item h3 {
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav {
+          justify-content: center;
+          padding: 10px;
+          gap: 10px;
+        }
+
+        nav a {
+          font-size: 0.9rem;
+        }
+
+        .hero {
+          padding: 10px;
+        }
+
+        .hero h1 {
+          font-size: 1.5rem;
+        }
+
+        .hero p {
+          font-size: 0.9rem;
+        }
+
+        .profile-pic {
+          width: 100px;
+          height: 100px;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        .skill-item img {
+          width: 30px;
+          height: 30px;
+        }
+
+        .project-card h3 {
+          font-size: 1rem;
+        }
+
+        .project-card p {
+          font-size: 0.8rem;
+        }
+
+        .project-card a {
+          font-size: 0.8rem;
+        }
+
+        .project-card img {
+          height: 80px;
+        }
+
+        .habilidades-list li img {
+          width: 20px;
+          height: 20px;
+        }
+
+        .experiencia-item h3 {
+          font-size: 1rem;
+        }
+
+        #contacto input,
+        #contacto textarea,
+        #contacto button {
+          font-size: 0.9rem;
+        }
       }
     </style>
   </head>
