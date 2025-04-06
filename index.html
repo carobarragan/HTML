@@ -101,7 +101,7 @@
       }
 
       .skill-item {
-        background: #2b2b2b;
+        background: #333333;
         padding: 15px;
         border-radius: 10px;
         transition: transform 0.3s ease, background 0.3s ease;
@@ -110,7 +110,6 @@
       .skill-item img {
         width: 50px;
         height: 50px;
-        filter: brightness(0) invert(1);
       }
 
       .skill-item:hover {
@@ -135,15 +134,22 @@
         margin-bottom: 5px;
       }
 
-      /* Estilos del carrusel de proyectos */
+      /* Carrusel optimizado */
       #proyectos {
         overflow: hidden;
         position: relative;
+        width: 100%;
       }
 
       .carousel {
         display: flex;
+        width: 200%; /* Duplicamos el ancho para cubrir original + copia */
         animation: slide 20s infinite linear;
+      }
+
+      .carousel-inner {
+        display: flex;
+        width: 50%; /* Cada conjunto (original y copia) ocupa la mitad */
       }
 
       .project-card {
@@ -153,8 +159,8 @@
         text-align: center;
         min-width: 300px;
         margin: 10px;
-        transition: transform 0.3s ease;
         flex-shrink: 0;
+        transition: transform 0.3s ease;
       }
 
       .project-card:hover {
@@ -180,11 +186,12 @@
           transform: translateX(0);
         }
         100% {
-          transform: translateX(-100%);
+          transform: translateX(
+            -50%
+          ); /* Desplaza solo la mitad del ancho total */
         }
       }
 
-      /* Pausar animación al pasar el mouse */
       #proyectos:hover .carousel {
         animation-play-state: paused;
       }
@@ -265,7 +272,6 @@
       .habilidades-list li img {
         width: 30px;
         height: 30px;
-        filter: brightness(0) invert(1);
       }
 
       .capacitaciones-list li span {
@@ -352,46 +358,49 @@
       </div>
     </section>
 
-    <!-- Sección de proyectos como carrusel -->
     <section id="proyectos">
       <h2>Proyectos</h2>
       <div class="carousel">
-        <div class="project-card">
-          <img src="https://via.placeholder.com/300x150" alt="AutoParts" />
-          <h3>AutoParts</h3>
-          <p>Plataforma de gestión de inventario automotriz.</p>
-          <a href="https://stocks-parts-ui.vercel.app" target="_blank"
-            >Ver Proyecto</a
-          >
+        <div class="carousel-inner">
+          <div class="project-card">
+            <img src="/ProyectoAP/auto_part.png" alt="AutoParts" />
+            <h3>AutoParts</h3>
+            <p>Plataforma de gestión de inventario automotriz.</p>
+            <a href="https://stocks-parts-ui.vercel.app" target="_blank"
+              >Ver Proyecto</a
+            >
+          </div>
+          <div class="project-card">
+            <img src="https://via.placeholder.com/300x150" alt="Proyecto 2" />
+            <h3>Proyecto 2</h3>
+            <p>Descripción del proyecto 2.</p>
+          </div>
+          <div class="project-card">
+            <img src="https://via.placeholder.com/300x150" alt="Proyecto 3" />
+            <h3>Proyecto 3</h3>
+            <p>Descripción del proyecto 3.</p>
+          </div>
         </div>
-        <div class="project-card">
-          <img src="https://via.placeholder.com/300x150" alt="Proyecto 2" />
-          <h3>Proyecto 2</h3>
-          <p>Descripción del proyecto 2.</p>
-        </div>
-        <div class="project-card">
-          <img src="https://via.placeholder.com/300x150" alt="Proyecto 3" />
-          <h3>Proyecto 3</h3>
-          <p>Descripción del proyecto 3.</p>
-        </div>
-        <!-- Duplicamos los elementos para el efecto infinito -->
-        <div class="project-card">
-          <img src="ProyectoAP/auto_part.png" alt="AutoParts" />
-          <h3>AutoParts</h3>
-          <p>Plataforma de gestión de inventario automotriz.</p>
-          <a href="https://stocks-parts-ui.vercel.app/" target="_blank"
-            >Ver Proyecto</a
-          >
-        </div>
-        <div class="project-card">
-          <img src="https://via.placeholder.com/300x150" alt="Proyecto 2" />
-          <h3>Proyecto 2</h3>
-          <p>Descripción del proyecto 2.</p>
-        </div>
-        <div class="project-card">
-          <img src="https://via.placeholder.com/300x150" alt="Proyecto 3" />
-          <h3>Proyecto 3</h3>
-          <p>Descripción del proyecto 3.</p>
+        <!-- Duplicado para el efecto infinito -->
+        <div class="carousel-inner">
+          <div class="project-card">
+            <img src="skills/ProyectoAP/AutoPart1.png" alt="AutoParts" />
+            <h3>AutoParts</h3>
+            <p>Plataforma de gestión de inventario automotriz.</p>
+            <a href="https://stocks-parts-ui.vercel.app" target="_blank"
+              >Ver Proyecto</a
+            >
+          </div>
+          <div class="project-card">
+            <img src="https://via.placeholder.com/300x150" alt="Proyecto 2" />
+            <h3>Proyecto 2</h3>
+            <p>Descripción del proyecto 2.</p>
+          </div>
+          <div class="project-card">
+            <img src="https://via.placeholder.com/300x150" alt="Proyecto 3" />
+            <h3>Proyecto 3</h3>
+            <p>Descripción del proyecto 3.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -414,7 +423,8 @@
           <ul class="habilidades-list">
             <li><img src="skills/rust.gif" alt="Rust" /> Desarrollo en Rust</li>
             <li>
-              <img src="skills/svelte.png" alt="Svelte" /> Frontend con Svelte
+              <img src="skills/icons8-brillante-48.png" alt="Svelte" /> Frontend
+              con Svelte
             </li>
             <li>
               <img src="skills/icons8-postgresql-48.png" alt="PostgreSQL" />
@@ -430,11 +440,11 @@
           <h3>Capacitaciones</h3>
           <ul class="capacitaciones-list">
             <li>
-              <span> AWS Educate Getting Started with Storage</span> - Amazon
-              Web Services (2025)
+              <span>AWS Educate Getting Started with Storage</span> - Amazon Web
+              Services (2025)
             </li>
             <li>
-              <span> AWS Educate Introduction to Cloud 101</span> - Amazon Web
+              <span>AWS Educate Introduction to Cloud 101</span> - Amazon Web
               Services (2025)
             </li>
             <li><span>Rust Programming</span></li>
