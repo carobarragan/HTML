@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyectos - Carolina Barragan</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* VARIABLES: Definición de la paleta de colores futurista de Terminal */
+      :root {
+        --color-negro: #0a0a0a; /* Negro más profundo para terminal */
+        --color-gris-oscuro: #1f1f1f; /* Fondos de sección */
+        --color-gris-claro: #b0b0b0; /* Texto sutil */
+        --color-azul-principal: #00bcd4; /* Azul cian vibrante (Neón) */
+        --color-azul-claro: #4dd0e1;
+        --color-texto: #e0e0e0; /* Blanco ligeramente grisáceo */
+        --color-ambar-log: #ff9800; /* Para logs y fechas (Ámbar) */
+        --font-code: "Courier New", monospace; /* Fuente de código */
+        --duracion-fondo: 20s;
+      }
+
+      /* 1. ANIMACIÓN: Fondo en Movimiento (Efecto "IA") */
+      @keyframes background-movement {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* 2. ESTILO BASE Y CAPA DE RUIDO (GLITCH SUTÍL) */
+      body {
+        font-family: var(
+          --font-code
+        ); /* Fuente de código para el estilo terminal */
+        background-color: var(--color-negro);
+        color: var(--color-texto);
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        /* Fondo dinámico con gradiente y movimiento */
+        background: linear-gradient(
+          -45deg,
+          var(--color-negro) 0%,
+          #171725 25%,
+          #0d1a2a 50%,
+          var(--color-negro) 75%,
+          #171725 100%
+        );
+        background-size: 400% 400%;
+        animation: background-movement var(--duracion-fondo) ease infinite;
+      }
+
+      /* Capa de "Ruido/Estática" Sci-Fi */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 188, 212, 0.04),
+          /* Ruido con un ligero tinte azul */ rgba(0, 188, 212, 0.04) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* 3. ENCABEZADO Y NAVEGACIÓN (Efecto "Frosted Glass" Oscuro) */
+      header {
+        background-color: rgba(10, 10, 10, 0.95); /* Negro semi-transparente */
+        padding: 1rem 3rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px); /* Efecto de desenfoque moderno */
+      }
+
+      nav {
+        display: flex;
+        justify-content: flex-start;
+        gap: 2rem;
+      }
+
+      nav a {
+        color: var(--color-gris-claro);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 0;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--color-azul-principal);
+      }
+
+      /* Línea inferior de neón animada */
+      nav a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-azul-principal);
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        transition: width 0.4s ease;
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      /* 4. ESTILO GENERAL DE SECCIONES y TÍTULOS */
+      section {
+        padding: 3rem 10%;
+        margin: 2rem auto;
+        max-width: 1200px;
+      }
+
+      h2 {
+        color: var(--color-azul-principal);
+        font-size: 2.8rem;
+        text-align: center;
+        text-shadow: 0 0 8px var(--color-azul-principal);
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        margin-bottom: 2rem;
+      }
+
+      /* --- ESTILOS ESPECÍFICOS PARA EXPERIENCIA (DATA LOG) --- */
+
+      /* Contenedor de la sección Experiencia (Estilo Pantalla Activa) */
+      #experiencia {
+        max-width: 900px;
+        background-color: var(--color-gris-oscuro);
+        border: 2px solid var(--color-azul-principal);
+        border-radius: 5px;
+        box-shadow: 0 0 30px rgba(0, 188, 212, 0.4);
+      }
+
+      @keyframes pulse-border {
+        0% {
+          box-shadow: 0 0 30px rgba(0, 188, 212, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(0, 188, 212, 0.6);
+        }
+        100% {
+          box-shadow: 0 0 30px rgba(0, 188, 212, 0.4);
+        }
+      }
+      #experiencia:hover {
+        animation: pulse-border 2s infinite alternate;
+      }
+
+      /* Estilo de cada Log/Ítem */
+      .experiencia-item {
+        background-color: var(--color-negro);
+        padding: 1.5rem 2rem;
+        margin-bottom: 30px;
+        border-left: 3px solid var(--color-azul-principal);
+        border-right: 1px solid var(--color-gris-oscuro);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+        transition: all 0.3s ease;
+      }
+
+      .experiencia-item:hover {
+        background-color: #1a1a1a;
+        border-left: 5px solid var(--color-azul-claro);
+        transform: translateX(5px);
+        box-shadow: 0 0 10px rgba(0, 188, 212, 0.7);
+      }
+
+      .experiencia-item h3 {
+        color: var(--color-azul-claro);
+        font-size: 1.4rem;
+        border-bottom: 1px dashed var(--color-gris-oscuro);
+        padding-bottom: 0.5rem;
+      }
+
+      /* Fechas (Ámbar Log) */
+      .experiencia-item strong {
+        display: block;
+        color: var(--color-ambar-log);
+        font-size: 0.9rem;
+        margin: 0.5rem 0 1rem;
+        font-weight: normal;
+        letter-spacing: 2px;
+      }
+
+      /* --- ESTILOS ESPECÍFICOS PARA PROYECTOS (MÓDULOS) --- */
+
+      /* Configuración de Grilla Responsive */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        justify-items: center;
+      }
+
+      /* Estilo de la tarjeta de proyecto (Efecto Módulo/Chip) */
+      .project-card {
+        background-color: var(--color-gris-oscuro);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: all 0.4s ease;
+        overflow: hidden;
+        max-width: 350px;
+        position: relative;
+        border-top: 5px solid var(--color-azul-principal);
+        cursor: pointer;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7),
+          0 0 20px var(--color-azul-principal);
+      }
+
+      .project-card h3 {
+        color: var(--color-azul-claro);
+        font-size: 1.5rem;
+        margin: 15px 0 10px;
+        border-bottom: 1px dashed var(--color-negro);
+        padding-bottom: 5px;
+      }
+
+      .project-card p {
+        color: var(--color-gris-claro);
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+      }
+
+      .project-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        border: 1px solid var(--color-gris-oscuro);
+        filter: brightness(0.95) saturate(1.1);
+        transition: filter 0.3s ease;
+      }
+
+      .project-card:hover img {
+        filter: brightness(1.1) saturate(1.2);
+      }
+
+      /* Botón "Ver Proyecto" (Neón) */
+      .project-card a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--color-azul-principal);
+        color: var(--color-negro);
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 3px;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        text-transform: uppercase;
+      }
+
+      .project-card a:hover {
+        background-color: var(--color-azul-claro);
+        box-shadow: 0 0 15px var(--color-azul-principal);
+      }
+
+      /* --- ESTILOS ESPECÍFICOS PARA CONTACTO (FORMULARIO ENCRIPTADO) --- */
+
+      /* Contenedor de la sección Contacto (Interfaz Segura) */
+      #contacto {
+        max-width: 900px;
+        background-color: var(--color-gris-oscuro);
+        border: 2px solid var(--color-azul-principal);
+        border-radius: 5px;
+        box-shadow: 0 0 30px rgba(0, 188, 212, 0.4);
+      }
+
+      /* CAMPOS DE INPUT Y TEXTAREA (Estilo Terminal) */
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 15px;
+        background-color: var(--color-negro);
+        border: 1px solid var(--color-gris-claro);
+        color: var(--color-azul-claro);
+        font-family: var(--font-code);
+        font-size: 1rem;
+        box-shadow: inset 0 0 5px rgba(0, 188, 212, 0.3);
+        box-sizing: border-box;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--color-azul-principal);
+        box-shadow: inset 0 0 8px var(--color-azul-principal),
+          0 0 10px rgba(0, 188, 212, 0.5);
+      }
+
+      /* Botón de Contacto */
+      button[type="submit"] {
+        background-color: var(--color-azul-principal);
+        color: var(--color-negro);
+        border: none;
+        padding: 15px 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 3px;
+        box-shadow: 0 4px 15px rgba(0, 188, 212, 0.5);
+      }
+
+      /* Datos de Contacto Directo (Logs) */
+      .contact-info {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px dashed var(--color-gris-oscuro);
+      }
+
+      .contact-info span {
+        color: var(--color-ambar-log); /* Color Ámbar para los datos críticos */
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      /* --- MEDIA QUERIES (RESPONSIVE) --- */
+      @media (max-width: 768px) {
+        h2 {
+          font-size: 2rem;
+        }
+        section {
+          padding: 2rem 5%;
+        }
+        .projects-grid {
+          gap: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="experiencia.html">Experiencia</a>
+        <a href="certificaciones.html">Certificaciones</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </header>
+
+    <section id="proyectos">
+      <h2>PORTAFOLIO DE PROYECTOS</h2>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="/ProyectoAP/auto_part.png" alt="AutoParts" />
+          <h3>AutoParts (Gestión de Inventario)</h3>
+          <p>
+            Plataforma de gestión de inventario automotriz avanzada, optimizada
+            para rendimiento y trazabilidad de piezas críticas.
+          </p>
+          <a href="https://stocks-parts-ui.vercel.app" target="_blank"
+            >Ver Proyecto [LOG]</a
+          >
+        </div>
+
+        <div class="project-card">
+          <img src="/ProyectoAP/calendar_ia.png" alt="Calendar IA" />
+          <h3>Calendar IA (Asistente Inteligente)</h3>
+          <p>
+            Sistema de gestión de calendario y planificación impulsado por IA
+            para la optimización automática de agendas y recursos.
+          </p>
+          <a href="https://calendar-ia-six.vercel.app/" target="_blank"
+            >Ver Proyecto [LOG]</a
+          >
+        </div>
+
+        <div class="project-card">
+          <img
+            src="https://via.placeholder.com/350x180/1f1f1f/00bcd4?text=PROYECTO+3"
+            alt="Proyecto 3"
+          />
+          <h3>Proyecto 3 (Foco en Ciberseguridad)</h3>
+          <p>
+            Sistema de análisis y monitoreo de vulnerabilidades para entornos
+            cloud, diseñado bajo prácticas de Ingeniería de Software.
+          </p>
+          <a href="#">Ver Proyecto [LOG]</a>
+        </div>
+        <div>
+          <div class="project-card">
+            <h3>🏗️ Backend Hexagonal + CQRS</h3>
+            <p>API REST en Go con arquitectura limpia, CQRS y multi-tenancy</p>
+
+            <div class="tech-stack">
+              <span class="badge">Go</span>
+              <span class="badge">PostgreSQL</span>
+              <span class="badge">Hexagonal</span>
+              <span class="badge">CQRS</span>
+            </div>
+
+            <div class="highlights">
+              <ul>
+                <li>✅ Arquitectura Hexagonal completa</li>
+                <li>✅ Separación CQRS (comandos/queries)</li>
+                <li>✅ Multi-tenancy a nivel aplicación</li>
+                <li>✅ Feature flags configurables</li>
+              </ul>
+            </div>
+
+            <div class="links">
+              <a
+                href="https://github.com/tu-usuario/backend-hexagonal-cqrs"
+                target="_blank"
+              >
+                <i class="fab fa-github"></i> Ver Código
+              </a>
+              <a
+                href="https://github.com/carobarragan/Backend-con-Arquitectura-Hexagonal-CQRS"
+                target="_blank"
+              >
+                <i class="fas fa-book"></i> Documentación
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

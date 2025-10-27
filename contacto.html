@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto - Carolina Barragan</title>
+    <style>
+      /* Variables y Estilos Base de Terminal */
+      :root {
+        --color-negro: #0a0a0a;
+        --color-gris-oscuro: #1f1f1f;
+        --color-gris-claro: #b0b0b0;
+        --color-azul-principal: #00bcd4; /* Neón */
+        --color-azul-claro: #4dd0e1;
+        --color-texto: #e0e0e0;
+        --color-ambar-log: #ff9800; /* Para logs y datos críticos */
+        --font-code: "Courier New", monospace;
+      }
+
+      /* Animación de Fondo */
+      @keyframes background-movement {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      body {
+        font-family: var(--font-code);
+        background-color: var(--color-negro);
+        color: var(--color-texto);
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(
+          -45deg,
+          var(--color-negro) 0%,
+          #171725 25%,
+          #0d1a2a 50%,
+          var(--color-negro) 75%,
+          #171725 100%
+        );
+        background-size: 400% 400%;
+        animation: background-movement 20s ease infinite;
+      }
+
+      /* Capa de "Ruido/Estática" Sci-Fi */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 188, 212, 0.04),
+          rgba(0, 188, 212, 0.04) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* Navegación (Header) */
+      header {
+        background-color: rgba(10, 10, 10, 0.95);
+        padding: 1rem 3rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+      }
+
+      nav {
+        display: flex;
+        justify-content: flex-start;
+        gap: 2rem;
+      }
+
+      nav a {
+        color: var(--color-gris-claro);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 0;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--color-azul-principal);
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-azul-principal);
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        transition: width 0.4s ease;
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      /* TÍTULO Y SECCIÓN PRINCIPAL */
+      #contacto {
+        padding: 3rem 10%;
+        margin: 2rem auto;
+        max-width: 900px;
+        background-color: var(--color-gris-oscuro);
+        border: 2px solid var(--color-azul-principal);
+        border-radius: 5px;
+        box-shadow: 0 0 30px rgba(0, 188, 212, 0.4);
+      }
+
+      h2 {
+        color: var(--color-azul-principal);
+        font-size: 2.8rem;
+        text-align: center;
+        text-shadow: 0 0 8px var(--color-azul-principal);
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        margin-top: 0;
+        padding-bottom: 1rem;
+        border-bottom: 2px dashed var(--color-gris-claro);
+      }
+
+      /* ESTILO DEL FORMULARIO */
+      form {
+        display: grid;
+        gap: 20px;
+        margin-top: 2rem;
+      }
+
+      /* CAMPOS DE INPUT Y TEXTAREA (Estilo Terminal) */
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 15px;
+        background-color: var(--color-negro);
+        border: 1px solid var(--color-gris-claro);
+        color: var(--color-azul-claro); /* Texto de entrada en color Neón */
+        font-family: var(--font-code);
+        font-size: 1rem;
+        box-shadow: inset 0 0 5px rgba(0, 188, 212, 0.3); /* Resplandor interior */
+        transition: border-color 0.3s, box-shadow 0.3s;
+        box-sizing: border-box;
+      }
+
+      /* Efecto Focus: Brillo de Terminal */
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--color-azul-principal);
+        box-shadow: inset 0 0 8px var(--color-azul-principal),
+          0 0 10px rgba(0, 188, 212, 0.5);
+      }
+
+      /* BOTÓN ENVIAR */
+      button[type="submit"] {
+        background-color: var(--color-azul-principal);
+        color: var(--color-negro);
+        border: none;
+        padding: 15px 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        border-radius: 3px;
+        box-shadow: 0 4px 15px rgba(0, 188, 212, 0.5);
+        letter-spacing: 1px;
+      }
+
+      button[type="submit"]:hover {
+        background-color: var(--color-azul-claro);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--color-azul-principal);
+      }
+
+      /* SECCIÓN DE DATOS DE CONTACTO DIRECTO (LOGS) */
+      .contact-info {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px dashed var(--color-gris-oscuro);
+      }
+
+      .contact-info p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      .contact-info span {
+        color: var(--color-ambar-log); /* Color Ámbar para los datos críticos */
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      .contact-info a {
+        color: var(--color-azul-claro);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .contact-info a:hover {
+        color: var(--color-azul-principal);
+        text-shadow: 0 0 5px var(--color-azul-principal);
+      }
+
+      /* Media Queries */
+      @media (max-width: 768px) {
+        #contacto {
+          padding: 1.5rem 5%;
+        }
+        h2 {
+          font-size: 2rem;
+        }
+        form {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="experiencia.html">Experiencia</a>
+        <a href="certificaciones.html">Certificaciones</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </header>
+    <section id="contacto">
+      <h2>Conexión Segura</h2>
+
+      <p style="text-align: center; color: var(--color-gris-claro)">
+        [INICIANDO INTERFAZ DE COMUNICACIÓN ENCRIPTADA]
+      </p>
+
+      <form>
+        <div style="display: flex; gap: 20px">
+          <input
+            type="text"
+            placeholder="Nombre (Módulo de Identificación)"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Correo Electrónico (Respuesta de Sistema)"
+            required
+          />
+        </div>
+        <textarea
+          placeholder="Mensaje (Transmisión de Datos)"
+          rows="7"
+          required
+        ></textarea>
+        <button type="submit">Enviar / Iniciar Transmisión</button>
+      </form>
+
+      <div class="contact-info">
+        <h3>[Log de Datos Directo]</h3>
+        <p>
+          <span>// E-mail:</span>
+          <a href="mailto:caro_barragan@live.com.ar"
+            >caro_barragan@live.com.ar</a
+          >
+        </p>
+        <p>
+          <span>// Teléfono:</span>
+          <a href="tel:+542226597481">+54 2226597481</a>
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
