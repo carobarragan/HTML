@@ -1,0 +1,400 @@
+/* Variables (Asegúrate de que estas variables estén en la parte superior de tu style.css) */
+:root {
+  --color-negro: #0a0a0a; /* Negro más profundo para terminal */
+  --color-gris-oscuro: #1f1f1f;
+  --color-gris-claro: #b0b0b0;
+  --color-azul-principal: #00bcd4; /* Azul cian vibrante (Neón) */
+  --color-azul-claro: #4dd0e1;
+  --color-texto: #e0e0e0;
+  --color-ambar-log: #ff9800;
+  --font-code: "Courier New", monospace;
+  --duracion-fondo: 20s;
+}
+
+/* 1. ANIMACIONES GLOBALES */
+@keyframes background-movement {
+  0% {
+    background-position: 0% 50;
+  }
+  50% {
+    background-position: 100% 50;
+  }
+  100% {
+    background-position: 0% 50;
+  }
+}
+
+/* NUEVO: Cuadrícula/Patrón de Datos Futurista */
+@keyframes grid-pulse {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.05;
+  }
+  50% {
+    transform: translate(-20px, -20px);
+    opacity: 0.1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.05;
+  }
+}
+
+/* 2. ESTILO BASE Y CAPAS DE FONDO AVANZADAS */
+body {
+  font-family: var(--font-code);
+  background-color: var(--color-negro);
+  color: var(--color-texto);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  /* Fondo dinámico con gradiente y movimiento */
+  background: linear-gradient(
+    -45deg,
+    var(--color-negro) 0%,
+    #171725 25%,
+    #0d1a2a 50%,
+    var(--color-negro) 75%,
+    #171725 100%
+  );
+  background-size: 400% 400%;
+  animation: background-movement var(--duracion-fondo) ease infinite;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Capa de Ruido/Estática (body::before) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 188, 212, 0.02),
+    rgba(0, 188, 212, 0.02) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* NUEVO: Capa de "Cuadrícula/Patrón de Datos" Animada (body::after) */
+body::after {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 49px,
+      rgba(0, 188, 212, 0.05) 50px,
+      rgba(0, 188, 212, 0.05) 51px,
+      transparent 52px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 49px,
+      rgba(0, 188, 212, 0.05) 50px,
+      rgba(0, 188, 212, 0.05) 51px,
+      transparent 52px
+    );
+  pointer-events: none;
+  z-index: -2;
+  animation: grid-pulse 25s ease-in-out infinite alternate;
+}
+
+/* 3. ENCABEZADO Y NAVEGACIÓN (Efecto "Frosted Glass") */
+header {
+  background-color: rgba(18, 18, 18, 0.9); /* Negro semi-transparente */
+  padding: 1rem 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px); /* Efecto de desenfoque moderno */
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2.5rem;
+}
+
+nav a {
+  color: var(--color-gris-claro);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--color-azul-principal);
+}
+
+/* Línea inferior de neón animada */
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-azul-principal);
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Curva de animación moderna */
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* 4. SECCIÓN HERO (Presentación y Foto de Perfil) */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem 10%;
+  min-height: 80vh;
+  position: relative; /* CRUCIAL para las burbujas */
+  overflow: hidden; /* CRUCIAL para las burbujas */
+}
+
+.hero-content {
+  max-width: 60%;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  /* Efecto de texto con sombra de neón */
+  text-shadow: 0 0 8px var(--color-azul-principal),
+    0 0 20px var(--color-azul-principal);
+}
+
+.hero p {
+  font-size: 1.6rem;
+  font-style: italic;
+  /* Gradiente para el subtítulo */
+  background: linear-gradient(
+    90deg,
+    var(--color-azul-claro),
+    var(--color-gris-claro)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.profile-pic {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--color-azul-principal);
+  box-shadow: 0 0 20px var(--color-azul-principal);
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bounce en la animación */
+}
+
+.profile-pic:hover {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 0 40px var(--color-azul-principal),
+    0 0 10px rgba(255, 255, 255, 0.9);
+}
+
+/* 5. BURBUJAS FLOTANTES (Refuerzo Visual de IA) */
+@keyframes bubble-float {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50vh) scale(1);
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: bubble-float linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero::before {
+  /* Burbuja 1 */
+  width: 30px;
+  height: 30px;
+  left: 10%;
+  bottom: 0px;
+  background-color: var(--color-azul-principal);
+  animation-duration: 18s;
+  animation-delay: 0s;
+  box-shadow: 0 0 15px var(--color-azul-principal),
+    0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.hero::after {
+  /* Burbuja 2 */
+  width: 20px;
+  height: 20px;
+  right: 15%;
+  bottom: -20px;
+  background-color: var(--color-azul-claro);
+  animation-duration: 14s;
+  animation-delay: 5s;
+  box-shadow: 0 0 10px var(--color-azul-claro), 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* 6. ESTILO GENERAL DE SECCIONES */
+section {
+  padding: 3rem 10%;
+  margin: 2rem auto;
+  max-width: 1200px;
+  background-color: var(--color-gris-oscuro);
+  border-radius: 10px;
+  border-left: 5px solid var(--color-azul-principal);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.4s ease;
+}
+
+section:hover {
+  box-shadow: 0 0 25px var(--color-azul-principal);
+}
+
+h2 {
+  color: var(--color-azul-principal);
+  border-bottom: 2px solid var(--color-azul-principal);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  /* Asegurando el estilo neón para todos los H2 */
+  text-shadow: 0 0 8px var(--color-azul-principal);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* 7. SECCIÓN DE HABILIDADES (SKILLS) */
+.skills-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.skill-item {
+  background-color: var(--color-negro);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-gris-oscuro);
+  transition: all 0.3s ease;
+  flex-basis: 100px;
+  text-align: center;
+}
+
+.skill-item:hover {
+  background-color: #1f1f1f;
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4),
+    0 0 10px var(--color-azul-principal);
+}
+
+.skill-item img {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 2px var(--color-azul-principal));
+}
+
+/* 8. ENLACES Y BOTONES DE LLAMADA A LA ACCIÓN */
+a[href$=".html"]:not(nav a) {
+  /* Estilo para botones de "Ver más" */
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-azul-principal);
+  color: var(--color-negro);
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+a[href$=".html"]:not(nav a):hover {
+  background-color: var(--color-azul-claro);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--color-azul-principal);
+}
+
+/* 9. FOOTER */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--color-negro);
+  border-top: 1px solid var(--color-gris-oscuro);
+  color: var(--color-gris-claro);
+  font-size: 0.9rem;
+}
+
+/* 10. MEDIA QUERIES (Responsive) */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 5%;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .profile-pic {
+    width: 180px;
+    height: 180px;
+  }
+
+  nav {
+    justify-content: space-around;
+    gap: 0.5rem;
+  }
+
+  section {
+    padding: 2rem 5%;
+  }
+}
+
+/* --- ESTILOS ESPECÍFICOS PARA HABILIDADES/CERTIFICACIONES (PANEL DE ESTADO) --- */
+
+/* EFECTO DE SOMBRA DE ROBOT/IA EN MOVIMIENTO */
+/* NOTA: Las animaciones shadow-move y pulse-color están definidas arriba, antes de la sección. */
+
+#habilidades-capacitaciones {
+  padding: 3rem 10%;
+  max-width: 1200px;
+  background-color: var(--color-gris-oscuro);
+  border: 2px solid var;
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experiencia - Carolina Barragan</title>
+    <style>
+      /* Variables y Animación de Fondo (Consistente con Index) */
+      :root {
+        --color-negro: #0a0a0a; /* Negro más profundo para terminal */
+        --color-gris-oscuro: #1f1f1f; /* Fondo de secciones */
+        --color-gris-claro: #b0b0b0; /* Texto sutil */
+        --color-azul-principal: #00bcd4; /* Azul cian vibrante (Neón) */
+        --color-azul-claro: #4dd0e1;
+        --color-texto: #e0e0e0; /* Blanco ligeramente grisáceo */
+        --font-code: "Courier New", monospace; /* Fuente de código */
+      }
+
+      /* Animación de Fondo (Se mantiene la consistencia) */
+      @keyframes background-movement {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* ANIMACIÓN: Pulso sutil en el contenedor principal (Para el efecto IA) */
+      @keyframes pulse-border {
+        0% {
+          box-shadow: 0 0 30px rgba(0, 188, 212, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(0, 188, 212, 0.6);
+        }
+        100% {
+          box-shadow: 0 0 30px rgba(0, 188, 212, 0.4);
+        }
+      }
+
+      body {
+        font-family: var(--font-code); /* Usamos la fuente de código */
+        background-color: var(--color-negro);
+        color: var(--color-texto);
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(
+          -45deg,
+          var(--color-negro) 0%,
+          #171725 25%,
+          #0d1a2a 50%,
+          var(--color-negro) 75%,
+          #171725 100%
+        );
+        background-size: 400% 400%;
+        animation: background-movement 20s ease infinite;
+      }
+
+      /* Capa de "Ruido/Estática" Sci-Fi */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 188, 212, 0.04),
+          /* Ruido con un ligero tinte azul */ rgba(0, 188, 212, 0.04) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* Navegación (Header) */
+      header {
+        background-color: rgba(10, 10, 10, 0.95); /* Más oscuro */
+        padding: 1rem 3rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+      }
+
+      nav {
+        display: flex;
+        justify-content: flex-start;
+        gap: 2rem;
+      }
+
+      nav a {
+        color: var(--color-gris-claro);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 0;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--color-azul-principal);
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-azul-principal);
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        transition: width 0.4s ease;
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      /* TÍTULO PRINCIPAL (Como encabezado de Log) */
+      h2 {
+        color: var(--color-azul-principal);
+        font-size: 2.8rem;
+        padding: 2rem 5%;
+        margin-bottom: 0;
+        text-align: center;
+        text-shadow: 0 0 8px var(--color-azul-principal);
+        text-transform: uppercase;
+        letter-spacing: 5px;
+      }
+
+      /* SECCIÓN PRINCIPAL: Contenedor con apariencia de "Pantalla" */
+      #experiencia {
+        padding: 3rem 10%;
+        margin: 2rem auto;
+        max-width: 900px;
+        background-color: var(--color-gris-oscuro);
+        border: 2px solid var(--color-azul-principal); /* Borde fuerte de neón */
+        border-radius: 5px;
+        box-shadow: 0 0 30px rgba(0, 188, 212, 0.4); /* Sombra de pantalla */
+      }
+
+      #experiencia:hover {
+        animation: pulse-border 2s infinite alternate; /* Pulso de neón al pasar el ratón */
+      }
+
+      /* ESTILO DE CADA ITEM DE EXPERIENCIA (Registro de Log/Terminal) */
+      .experiencia-item {
+        background-color: var(--color-negro);
+        padding: 1.5rem 2rem;
+        margin-bottom: 30px;
+        border-left: 3px solid var(--color-azul-principal); /* Línea de Neón */
+        border-right: 1px solid var(--color-gris-oscuro); /* Ligero contraste */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      /* Efecto Hover: Resaltado de Terminal (Glitch/Error Sutil) */
+      .experiencia-item:hover {
+        background-color: #1a1a1a;
+        border-left: 5px solid var(--color-azul-claro);
+        transform: translateX(
+          5px
+        ); /* Se desliza ligeramente para indicar selección */
+        box-shadow: 0 0 10px rgba(0, 188, 212, 0.7);
+      }
+
+      /* Puesto y Empresa */
+      .experiencia-item h3 {
+        color: var(--color-azul-claro);
+        font-size: 1.4rem;
+        margin-top: 0;
+        border-bottom: 1px dashed var(--color-gris-oscuro); /* Línea de puntos de terminal */
+        padding-bottom: 0.5rem;
+      }
+
+      /* Fechas (CRÍTICO: Resaltado como metadato del log) */
+      .experiencia-item strong {
+        display: block;
+        color: #ff9800; /* Color Ámbar (Naranja) típico de logs de terminal */
+        font-size: 0.9rem;
+        margin: 0.5rem 0 1rem;
+        font-weight: normal;
+        letter-spacing: 2px;
+      }
+
+      /* Párrafo de descripción (El texto del log) */
+      .experiencia-item p {
+        color: var(--color-texto);
+        font-size: 1rem;
+      }
+
+      /* Medias Queries */
+      @media (max-width: 768px) {
+        h2 {
+          font-size: 2rem;
+        }
+        #experiencia {
+          padding: 1.5rem 5%;
+        }
+        .experiencia-item {
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="experiencia.html">Experiencia</a>
+        <a href="certificaciones.html">Certificaciones</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </header>
+    <section id="experiencia">
+      <h2>EXPERIENCIA</h2>
+
+      <div class="experiencia-item">
+        <h3>Software Engineer | DC Connected Car Gmbh</h3>
+        <p><strong>FEBRERO 2024 - ACTUALIDAD</strong></p>
+        <p>
+          <strong>[Sistema Autónomo] Ingeniería de Software en Rust:</strong>
+          Diseño y desarrollo de plataformas D2C para el **diagnóstico remoto**
+          de [cite_start]vehículos conectados (BMW, Mercedes-Benz, Ford)[cite:
+          13]. Creación de endpoints RESTful de alto rendimiento y **frontend
+          con Svelte** [cite_start]para visualización y gestión de datos
+          críticos[cite: 14, 15].
+        </p>
+      </div>
+
+      <div class="experiencia-item">
+        <h3>AI Agent (Joy) | Módulo de Lógica Dinámica</h3>
+        <p><strong>FEBRERO 2024 - ACTUALIDAD (PROYECTO INTERNO)</strong></p>
+        <p>
+          <strong
+            >[Módulo de Inteligencia] Agente de Conversación con IA:</strong
+          >
+          colaboración en el desarrollo de un Chatbot IA multi-capa capaz de
+          tomar **decisiones dinámicas** y operar con lógica de negocio
+          [cite_start]compleja[cite: 11]. Implementación de tecnologías de alto
+          rendimiento como **OpenAI** y **Qdrant (Vector DB)** para la evolución
+          [cite_start]y mantención del sistema[cite: 12].
+        </p>
+      </div>
+
+      <div class="experiencia-item">
+        <h3>Teaching Assistant | Henry Bootcamp</h3>
+        <p><strong>2022 - 2023</strong></p>
+        <p>
+          <strong>[Módulo de Soporte y Calibración]</strong> Soporte académico y
+          motivacional a estudiantes en sus primeras etapas. Coordinación de
+          grupos de aprendizaje colaborativo y revisión de tareas. Propuesta de
+          mejoras en procesos internos del bootcamp para optimizar la
+          [cite_start]experiencia de aprendizaje[cite: 18, 19, 21].
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
